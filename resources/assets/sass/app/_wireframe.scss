@@ -1,0 +1,195 @@
+@import "../variables";
+@import "../mixins";
+
+body {
+	background: #EED4B2 url("/storage/background-sm.jpg") no-repeat fixed center center;
+	background-size: cover;
+	overflow-y: scroll;
+	@include media-breakpoint-up(lg) {
+		background: #EED4B2 url("/storage/background.jpg") no-repeat fixed center center;
+		background-size: cover;
+	}
+}
+
+#app {
+	min-height: 100vh;
+	padding: 0 !important;
+	@include box-shadow(0, 0, 20px, #000);
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+}
+
+nav#top-navbar {
+	z-index: 50 !important;
+	@include box-shadow(5px, 10px, 15px -5px, rgba(0, 0, 0, 0.4));
+	@include media-breakpoint-down(md) {
+		.navbar-toggler {
+			position: absolute;
+			right: 1rem;
+			top: 0.5rem;
+		}
+	}
+	.brand-wrapper {
+		box-sizing: border-box;
+		position: relative;
+		@include media-breakpoint-down(md) {
+			flex: 1 1 auto;
+			max-width: 100%;
+			overflow: hidden;
+			padding-right: 60px;
+			&, a, small {
+				white-space: normal;
+				word-break: keep-all;
+				display: inline-block;
+			}
+		}
+		@include media-breakpoint-up(lg) {
+			flex: 0 0 auto;
+			width: 14rem;
+			overflow: visible;
+		}
+	}
+	#brand-image {
+		display: block;
+		position: absolute;
+		z-index: 60 !important;
+		top: -2rem;
+		left: -1rem;
+		width: 15rem;
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+}
+
+#content {
+	@include make-col(100);
+	flex: 1 0 auto;
+	background: $body-bg;
+	max-width: 100%;
+	@include media-breakpoint-up(lg) {
+		@include make-row();
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		aside#sidebar {
+			width: 100%;
+			flex: 1 1 auto;
+		}
+	}
+	aside#sidebar {
+		position: relative;
+		flex: 0 0 auto;
+		background: #232A0A;
+		color: #fff;
+		width: 100%;
+		@include media-breakpoint-up(lg) {
+			width: 15rem;
+		}
+		.links {
+			background: transparent;
+			border-radius: 0;
+			flex-direction: row;
+			flex-wrap: wrap;
+			@include media-breakpoint-up(lg) {
+				flex-direction: column;
+				flex-wrap: nowrap;
+			}
+			.link {
+				flex: 1 0 auto;
+				display: inline;
+				width: auto;
+				justify-content: space-between;
+				text-align: center;
+				margin-bottom: 0;
+				@include media-breakpoint-up(lg) {
+					flex: 1 1 auto;
+					display: block;
+					text-align: left;
+				}
+				background: transparent;
+				border-radius: 0;
+				color: #fff;
+				border: none;
+				transition: background 0.2s ease-out;
+				&:hover {
+					background: #66842F;
+				}
+				&.active {
+					background: #7F3F24;
+					&:hover {
+						background: #914729;
+					}
+				}
+			}
+		}
+	}
+	main#main {
+		flex: 1 1 auto;
+		position: relative;
+		//noinspection CssOverwrittenProperties
+		max-width: 100%;
+		//noinspection CssOverwrittenProperties
+		@include media-breakpoint-up(lg) {
+			max-width: calc(100% - 15rem);
+		}
+		.loader {
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			opacity: 0;
+			pointer-events: none;
+			transition: 0.2s ease;
+			padding-top: 41vh;
+			text-align: center;
+			background: $body-bg;
+			font-size: 4rem;
+			color: $brand-primary;
+		}
+		&.loading {
+			.loader {
+				opacity: 1;
+				pointer-events: all;
+			}
+		}
+		#page-content {
+			display: block;
+			padding: 2rem 1rem;
+			position: relative;
+			section {
+				display: block;
+				position: relative;
+				margin: 0 auto 2rem;
+				&.text-section {
+					max-width: 100%;
+					@include media-breakpoint-up(md) {
+						max-width: 35rem;
+						p {
+							text-align: justify;
+						}
+					}
+				}
+				&.wide-image-section {
+					img {
+						max-width: 100%;
+					}
+					span.img-credit {
+						font-size: 0.7rem;
+						color: #666;
+					}
+				}
+				&:last-child {
+					&::after {
+						content: '';
+						display: block;
+						position: relative;
+						height: 100px;
+					}
+				}
+			}
+		}
+	}
+}

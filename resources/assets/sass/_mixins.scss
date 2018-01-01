@@ -1,0 +1,34 @@
+@import "~bootstrap/scss/mixins";
+
+@mixin noselect() {
+	-webkit-touch-callout:	none;
+	-webkit-user-select:	none;
+	-khtml-user-select:		none;
+	-moz-user-select:		none;
+	-ms-user-select:		none;
+	user-select:			none;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+	@if $inset {
+		-webkit-box-shadow: inset $left $top $blur $color;
+		-moz-box-shadow: inset $left $top $blur $color;
+		box-shadow: inset $left $top $blur $color;
+	} @else {
+		-webkit-box-shadow: $left $top $blur $color;
+		-moz-box-shadow: $left $top $blur $color;
+		box-shadow: $left $top $blur $color;
+	}
+}
+
+@mixin outline($colour: red, $offset: -2px, $thickness: 2px, $style: solid) {
+	outline: $thickness $style $colour;
+	outline-offset: $offset;
+}
+
+@mixin columns($n) {
+	-moz-column-count: $n;
+	-moz-columns: $n;
+	-webkit-columns: $n;
+	columns: $n;
+}
