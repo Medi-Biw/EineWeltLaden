@@ -11,6 +11,8 @@ Dieses Projekt verwendet das PHP-Framework Laravel.
 
 Außerdem die JavaScript-Runtime und Package-Manager [Node.js](https://nodejs.org/de/).
 
+[Composer] ist ebenfalls keine schlechte Idee.
+
 Vorteil: wenn du Node.js und/oder Composer einmal installiert hast, kannst du die jeweilgen Schritte in der Installationsanleitung, auch bei zukünftigen Projekten, überspringen.
 
 ## Installation
@@ -26,7 +28,7 @@ Du _**kannst**_ das Projekt über einen lokalen Webserver, wie beispielsweise [W
 
 Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu stellen, dass alles funktioniert, gehe in dein WampServer- oder XAMPP-Instalationsverzeichnis und finde den Ordner, in dem die `php.exe` liegt. Bei Wamp ist das im Unterverzeichnis `\bin\php\php7.x.x`.
 
-Der Pfad dieses Ordners wird im folgenden Schritt (_in biden Fällen_ ...) benötigt.
+Der Pfad dieses Ordners wird im folgenden Schritt (_in beiden Fällen_ ...) benötigt.
 
 ##### _**ODER**_ Standalone PHP
 Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie in Schritt X der Installationsanleitung beschrieben, den Webdienst über ``artisan`` verfügbar zu machen.
@@ -47,7 +49,7 @@ Wenn das geschafft ist, gehe zum nächsten Schritt über.
 
 #### Composer installieren
 
-Installiere [Composer von hier](https://getcomposer.org/download/) entweder über den Windows Installer oder, vorzugsweise, über die Command-line (`cmd.exe`).
+Installiere [Composer von hier][Composer] entweder über den Windows Installer oder, vorzugsweise, über die Command-line (`cmd.exe`).
 
 Wenn die Command-line-Installation ausgibt, dass der Befehl `php` nicht gefunden wurde, musst du nochmal einen Schritt zurückgehen. Herzlichen Glückwunsch.
 
@@ -120,3 +122,5 @@ Natürlich ***in deinem eigenen Branch***, damit du nicht alles kaputt machst un
 ##### -- Danke und viel Spaß damit, Eric.
 
 P.S.: Fragen nehme ich jederzeit gerne entgegen.
+
+[Composer]: https://getcomposer.org/download/
