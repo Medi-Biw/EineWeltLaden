@@ -13,14 +13,11 @@
 
 Route::get('/', 'PagesController@index')->name('welcome');
 
-Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/about/{sub}', 'PagesController@about')->name('about');
-Route::post('/about/{sub}', 'PagesController@about')->name('about');
-//Route::get('/about/fair-trade', 'PagesController@about')->name('about.fair-trade');
-//Route::get('/about/vereinsleben', 'PagesController@about')->name('about.vereinsleben');
-//Route::get('/about/veranstaltungen', 'PagesController@about')->name('about.veranstaltungen');
-//Route::get('/about/bildungsarbeit', 'PagesController@about')->name('about.bildungsarbeit');
-//Route::get('/about/beteiligen', 'PagesController@about')->name('about.beteiligen');
+Route::get('/laden/{sub}', 'PagesController@laden')->name('laden');
+Route::get('/kontakt/{sub}', 'PagesController@kontakt')->name('kontakt');
+
+Route::redirect('/kontakt', '/kontakt/info');
 
 Auth::routes();
 

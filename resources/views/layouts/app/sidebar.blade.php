@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 	<aside id="sidebar">
-		<div style="position: sticky; top: 250px">
+		<div class="sidebar-content">
 			<div class="list-group links">
 				@if (!empty($sidenavitems))
 					@foreach($sidenavitems as $item)
@@ -19,8 +19,5 @@
 	</aside>
 	<main id="main">
 		@yield('main')
-		<div class="loader">
-			<i class="far fa-circle-notch fa-spin"></i>
-		</div>
 	</main>
 @endsection

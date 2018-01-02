@@ -2,9 +2,12 @@
 @import "../mixins";
 
 body {
-	background: #EED4B2 url("/storage/background-sm.jpg") no-repeat fixed center center;
-	background-size: cover;
+	background: #fff;
 	overflow-y: scroll;
+	@include media-breakpoint-up(sm) {
+		background: #EED4B2 url("/storage/background-sm.jpg") no-repeat fixed center center;
+		background-size: cover;
+	}
 	@include media-breakpoint-up(lg) {
 		background: #EED4B2 url("/storage/background.jpg") no-repeat fixed center center;
 		background-size: cover;
@@ -14,20 +17,26 @@ body {
 #app {
 	min-height: 100vh;
 	padding: 0 !important;
-	@include box-shadow(0, 0, 20px, #000);
+	@include box-shadow(0, 0, 20px, rgba(0, 0, 0, 0.5));
 	border-left: 1px solid #000;
 	border-right: 1px solid #000;
+	@include media-breakpoint-up(lg) {
+		@include box-shadow(0, 0, 20px, #000);
+	}
 }
 
 nav#top-navbar {
 	z-index: 50 !important;
-	@include box-shadow(5px, 10px, 15px -5px, rgba(0, 0, 0, 0.4));
+	@include box-shadow(-5px, 0, 15px 5px, rgba(0, 0, 0, 0.5));
 	@include media-breakpoint-down(md) {
 		.navbar-toggler {
 			position: absolute;
 			right: 1rem;
 			top: 0.5rem;
 		}
+	}
+	@include media-breakpoint-up(lg) {
+		@include box-shadow(5px, 10px, 15px -5px, rgba(0, 0, 0, 0.4));
 	}
 	.brand-wrapper {
 		box-sizing: border-box;
@@ -61,6 +70,16 @@ nav#top-navbar {
 			width: 100%;
 		}
 	}
+	ul#main-navbar {
+		.nav-item {
+			margin-left: 5px;
+			font-size: 1.05rem;
+			&.active > * {
+				font-weight: bold;
+				color: rgba(0, 0, 0, 0.6);
+			}
+		}
+	}
 }
 
 #content {
@@ -75,6 +94,15 @@ nav#top-navbar {
 		aside#sidebar {
 			width: 100%;
 			flex: 1 1 auto;
+			.sidebar-content {
+				$sidebar-links-height: 248px;
+				position: sticky;
+				top: $sidebar-links-height;
+				overflow-y: auto;
+				// hau $sidebar-links-height hier auch rein
+				max-height: calc(100vh - 248px);
+				min-height: 150px;
+			}
 		}
 	}
 	aside#sidebar {
@@ -159,6 +187,9 @@ nav#top-navbar {
 			display: block;
 			padding: 2rem 1rem;
 			position: relative;
+			hr {
+				margin: 2rem 0;
+			}
 			section {
 				display: block;
 				position: relative;
@@ -175,10 +206,29 @@ nav#top-navbar {
 				&.wide-image-section {
 					img {
 						max-width: 100%;
+						border-radius: 3px;
+						box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5);
 					}
 					span.img-credit {
 						font-size: 0.7rem;
 						color: #666;
+					}
+					iframe {
+						border: 1px solid #bbb;
+						width: 100%;
+						height: 500px;
+						box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5);
+						border-radius: 12px;
+						overflow: hidden;
+					}
+				}
+				&.event-section {
+					margin: 1.5rem 0;
+					p {
+						&.caption {
+							margin: 0.5rem 0;
+							font-size: 1rem;
+						}
 					}
 				}
 				&:last-child {
@@ -187,6 +237,7 @@ nav#top-navbar {
 						display: block;
 						position: relative;
 						height: 100px;
+						pointer-events: none;
 					}
 				}
 			}

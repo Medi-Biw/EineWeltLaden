@@ -1,16 +1,16 @@
 @extends('layouts.app.sidebar')
 
-@section('page_title', 'Vereinsleben - ')
-@section('sub', 'Über uns - ')
+@section('page_title', 'Mitarbeiter - ')
+@section('sub', 'Laden - ')
 
 @section('main')
 	<div id="page-content">
-		<h1>Wir über uns</h1>
+		<h1>Eine-Welt-Laden</h1>
 		<section class="wide-image-section">
-			<img src="/storage/platzhalter/vereinsleben.jpg">
+			<img src="/storage/platzhalter/mitarbeiter.jpg">
 		</section>
 		<section class="text-section">
-			<h2>Vereinsleben</h2>
+			<h2>Mitarbeiter</h2>
 			<p>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
 			</p>

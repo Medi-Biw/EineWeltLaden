@@ -4,3 +4,30 @@
 
 // frame
 @import "app/wireframe";
+
+.faf-l {
+	margin-left: 0.5rem;
+}
+
+.faf-r {
+	margin-right: 0.5rem;
+}
+
+.btn-fa-hover {
+	&:hover {
+		svg {
+			margin-left: 1rem;
+		}
+	}
+	svg {
+		transition: margin-left 0.23s ease;
+	}
+}
+
+.row.card-holder {
+	margin-left: -5px;
+	margin-right: -5px;
+	& > [class^="col-"] {
+		padding: 5px 5px;
+	}
+}

@@ -1,6 +1,6 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light" id="top-navbar">
 	<div class="brand-wrapper">
-		<a class="navbar-brand d-inline-block d-lg-none d-xl-none" href="{{ route('welcome') }}">Pax et Bonum <small>&mdash; Eine Welt Laden e.V.</small></a>
+		<a class="navbar-brand d-inline-block d-lg-none d-xl-none" href="{{ route('welcome') }}">Pax et bonum <small>&mdash; Eine Welt Laden e.V.</small></a>
 		<div id="brand-image" class="d-md-none d-none d-lg-block d-xl-block">
 			<img src="/storage/ewl-header-logo.png">
 		</div>
@@ -27,7 +27,7 @@
 				</li>
 			@endauth
 		</ul>
-		<ul class="navbar-nav">
+		<ul class="navbar-nav" id="main-navbar">
 			<li class="nav-item{{ Route::is('welcome') ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('welcome') }}">Startseite</a>
 			</li>
@@ -37,11 +37,11 @@
 			<li class="nav-item{{ Route::is('about') ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('about', ['sub' => 'verein']) }}">Über uns</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Laden</a>
+			<li class="nav-item{{ Route::is('laden') ? ' active' : '' }}">
+				<a class="nav-link" href="{{ route('laden', ['sub' => 'sortiment']) }}">Laden</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Kontakt</a>
+			<li class="nav-item{{ Route::is('kontakt') ? ' active' : '' }}">
+				<a class="nav-link" href="{{ route('kontakt', ['sub' => 'info']) }}">Kontakt</a>
 			</li>
 		</ul>
 	</div>
