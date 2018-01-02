@@ -31,7 +31,7 @@ Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu 
 Der Pfad dieses Ordners wird im folgenden Schritt (_in beiden Fällen_ ...) benötigt.
 
 ##### _**ODER**_ Standalone PHP
-Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie in Schritt `Entwicklung > Webserver` der Installationsanleitung beschrieben, den Webdienst über ``artisan`` verfügbar zu machen.
+Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie im Schritt `Entwicklung > Webserver` dieser README beschrieben, und so den Webdienst über ``artisan`` verfügbar zu machen.
 
 Um diese Variante zu verwenden, downloade von [hier](http://windows.php.net/download/) das entsprechende Archiv (sehr wahrscheinlich 'x64 Thread Safe') und extrahiere es in ein neues Verzeichnis (z.B. nach `"C:\Programme\PHP 7.2"`).
 
