@@ -13,7 +13,7 @@ Außerdem die JavaScript-Runtime und Package-Manager [Node.js](https://nodejs.or
 
 [Composer] ist ebenfalls keine schlechte Idee.
 
-Vorteil: wenn du Node.js und/oder Composer einmal installiert hast, kannst du die jeweilgen Schritte in der Installationsanleitung, auch bei zukünftigen Projekten, überspringen.
+Vorteil: wenn du Node.js und/oder Composer einmal installiert hast, kannst du die jeweiligen Schritte in der Installationsanleitung auch bei zukünftigen Projekten überspringen.
 
 ## Installation
 ### Das Projekt Clonen
@@ -79,7 +79,7 @@ npm install
 
 Daraufhin wird der **N**ode**P**ackage**M**anager von Node.js alle für das Projekt notwendigen Pakete in den Ordner ``\node_modules`` herunterladen.
 
-In der zwischen Zeit darfst du dir gern einen Kaffee kochen, denn ***Java***Script heißt ja nicht grundlos so, oder du betest und hoffst bitterlich darauf, dass bei der Installation keine Fehler auftreten. Wie gesagt: ***Java***Script.
+In der zwischen Zeit darfst du dir gern einen Kaffee kochen, denn _**Java**_Script heißt ja nicht grundlos so, oder du betest und hoffst bitterlich darauf, dass bei der Installation keine Fehler auftreten. Wie gesagt: _**Java**_Script.
 
 #### Installation abgeschlossen.
 
