@@ -31,7 +31,7 @@ Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu 
 Der Pfad dieses Ordners wird im folgenden Schritt (_in beiden Fällen_ ...) benötigt.
 
 ##### _**ODER**_ Standalone PHP
-Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie in Schritt X der Installationsanleitung beschrieben, den Webdienst über ``artisan`` verfügbar zu machen.
+Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie in Schritt `Entwicklung > Webserver` der Installationsanleitung beschrieben, den Webdienst über ``artisan`` verfügbar zu machen.
 
 Um diese Variante zu verwenden, downloade von [hier](http://windows.php.net/download/) das entsprechende Archiv (sehr wahrscheinlich 'x64 Thread Safe') und extrahiere es in ein neues Verzeichnis (z.B. nach `"C:\Programme\PHP 7.2"`).
 
@@ -45,7 +45,7 @@ SET PATH=%PATH%;C:\Dein\PHP\Ordner
 ````
 Im Zweifelsfall ist es immer der Ordner, in dem sich die `php.exe` befindet.
 
-Desweiteren ist zu beachten, dass der Document-Root, also das Verzeichnis, auf das der Webserver zugreifen sollte, nicht das Projekt-Stammverzeichnis, sondern der Ordner `\public`. In diesem ist auch die `index.php`.
+Desweiteren ist zu beachten, dass der Document-Root, also das Verzeichnis, auf das der Webserver zugreifen sollte, nicht das Projekt-Stammverzeichnis ist, sondern der Unterordner `\public`. In diesem ist auch die begehrte `index.php`.
 
 Wenn das geschafft ist, gehe zum nächsten Schritt über.
 
