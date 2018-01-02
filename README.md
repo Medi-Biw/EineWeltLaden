@@ -91,7 +91,7 @@ Wann immer du von nun an an dem Projekt arbeitest, gehe sicher, vorher mit einer
 npm run watch
 ````
 
-Das Konsolen-Fenster muss während der entwicklung offen bleiben, damit der Prozess nicht abgebrochen wird.
+Das Konsolen-Fenster muss während der Entwicklung offen bleiben, damit der Prozess nicht abgebrochen wird.
 
 Alternativ dazu, wenn du nur einmalig kompilieren möchtest:
 
@@ -107,7 +107,7 @@ npm run prod
 
 #### Webserver
 
-Wenn du keinen lokalen Webserver installiert hast und jetzt verwendest, vielleicht auch, weil du lediglich das PHP-Archiv heruntergeladen hast, verwende folgenden Befehl in einem neuen Terminal, zum bereitstellen eines Webdienstes, nachdem du ins Projektverzeichnis navigiert hast:
+Wenn du keinen lokalen Webserver installiert hast und jetzt verwendest, vielleicht auch, weil du lediglich das PHP-Archiv heruntergeladen hast, verwende folgenden Befehl in einem neuen Terminal, zum Bereitstellen eines Webdienstes, nachdem du ins Projektverzeichnis navigiert hast:
 
 ````bat
 php artisan serve
