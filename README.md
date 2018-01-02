@@ -23,7 +23,7 @@ In beiden Fällen musst du dich mit deinem GitHub-Account anmelden.
 
 ### Webserver
 
-##### Lokaler Webserver
+##### _**ENTWEDER**_ Lokaler Webserver
 Du _**kannst**_ das Projekt über einen lokalen Webserver, wie beispielsweise [WampServer](http://wampserver.aviatechno.net/) oder [XAMPP](https://www.apachefriends.org/de/index.html) bedienen. Gehe in egal welchem Fall sicher, die aktuellste Version mit **PHP 7** zu verwenden.
 
 Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu stellen, dass alles funktioniert, gehe in dein WampServer- oder XAMPP-Instalationsverzeichnis und finde den Ordner, in dem die `php.exe` liegt. Bei Wamp ist das im Unterverzeichnis `\bin\php\php7.x.x`.
@@ -44,6 +44,8 @@ Diesen Installationspfad brauchst du im nächsten Schritt.
 SET PATH=%PATH%;C:\Dein\PHP\Ordner
 ````
 Im Zweifelsfall ist es immer der Ordner, in dem sich die `php.exe` befindet.
+
+Desweiteren ist zu beachten, dass der Document-Root, also das Verzeichnis, auf das der Webserver zugreifen sollte, nicht das Projekt-Stammverzeichnis, sondern der Ordner `\public`. In diesem ist auch die `index.php`.
 
 Wenn das geschafft ist, gehe zum nächsten Schritt über.
 
@@ -119,7 +121,7 @@ Auch dieses Konsolen-Fenster muss Zeit der Entwicklung geöffnet bleiben.
 Vergiss nicht, deine Änderungen auch auf GitHub zu pushen.
 Natürlich ***in deinem eigenen Branch***, damit du nicht alles kaputt machst und mir damit mehr Arbeit.
 
-##### -- Danke und viel Spaß damit, Eric.
+#### &mdash; Danke und viel Spaß damit, Eric.
 
 P.S.: Fragen nehme ich jederzeit gerne entgegen.
 
