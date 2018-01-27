@@ -17,6 +17,8 @@ Route::get('/about/{sub}', 'PagesController@about')->name('about');
 Route::get('/laden/{sub}', 'PagesController@laden')->name('laden');
 Route::get('/kontakt/{sub}', 'PagesController@kontakt')->name('kontakt');
 
+Route::resource('posts', 'PostController');
+
 Route::redirect('/kontakt', '/kontakt/info');
 
 Auth::routes();

@@ -19,7 +19,7 @@ class PagesController extends Controller
 				'link' => route('welcome')
 			],
 			[	'title' => 'Aktuell',
-				'link' => '#'
+				'link' => route('posts.index')
 			],
 			[	'title' => 'Verein und Weltladen',
 				'link' => route('about', ['sub' => 'verein'])
@@ -126,7 +126,7 @@ class PagesController extends Controller
 				'link' => route('kontakt', ['sub' => 'info'])
 			],
 			[	'title' => 'Kontaktformular',
-				'link' => route('kontakt', ['sub' => 'kontaktformular'])
+				'link' => route('kontakt', ['sub' => 'formular'])
 			],
 			[	'title' => 'Datenschutz',
 				'link' => route('kontakt', ['sub' => 'datenschutz'])
@@ -138,10 +138,10 @@ class PagesController extends Controller
 		
 		$include = null;
 		
-		if		($request->is('kontakt/info'))				$include = 'pages.kontakt.info';
-		elseif	($request->is('kontakt/kontaktformular'))	$include = 'pages.kontakt.contactform';
-		elseif	($request->is('kontakt/datenschutz'))		$include = 'pages.kontakt.datenschutz';
-		elseif	($request->is('kontakt/impressum'))			$include = 'pages.kontakt.impressum';
+		if		($request->is('kontakt/info'))			$include = 'pages.kontakt.info';
+		elseif	($request->is('kontakt/formular'))		$include = 'pages.kontakt.contactform';
+		elseif	($request->is('kontakt/datenschutz'))	$include = 'pages.kontakt.datenschutz';
+		elseif	($request->is('kontakt/impressum'))		$include = 'pages.kontakt.impressum';
 		
 		if (empty($include))
 			return abort(404);

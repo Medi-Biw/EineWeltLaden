@@ -6,7 +6,7 @@
 				@if (!empty($sidenavitems))
 					@foreach($sidenavitems as $item)
 						<a href="{{ $item['link'] }}" class="list-group-item list-group-item-action link {{ $request->fullUrl() == $item['link'] ? ' active' : '' }}">
-							{{ $item['title'] }}
+							{!! $item['title'] !!}
 						</a>
 					@endforeach
 				@endif

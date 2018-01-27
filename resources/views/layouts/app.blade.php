@@ -23,7 +23,6 @@
 	<link rel="manifest" href="/manifest.json">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 	@stack('styles')
-	{{--<script src="{{ asset('js/fontawesome/fontawesome-all.min.js') }}"></script>--}}
 	<script src="{{ asset('js/app.js') }}"></script>
 	@stack('scripts')
 </head>

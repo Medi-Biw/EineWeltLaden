@@ -31,8 +31,8 @@
 			<li class="nav-item{{ Route::is('welcome') ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('welcome') }}">Startseite</a>
 			</li>
-			<li class="nav-item{{ Route::is('posts') ? ' active' : '' }}">
-				<a class="nav-link" href="#">Aktuell</a>
+			<li class="nav-item{{ Route::is('posts.*') ? ' active' : '' }}">
+				<a class="nav-link" href="{{ route('posts.index') }}">Aktuell</a>
 			</li>
 			<li class="nav-item{{ Route::is('about') ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('about', ['sub' => 'verein']) }}">Über uns</a>

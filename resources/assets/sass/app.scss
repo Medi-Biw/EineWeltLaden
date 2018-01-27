@@ -31,3 +31,18 @@
 		padding: 5px 5px;
 	}
 }
+
+a {
+	color: $secondary;
+	&:hover {
+		color: #000;
+	}
+}
+
+.note-toolbar.card-header {
+	display: block !important;
+	position: relative !important;
+	top: 0 !important;
+	z-index: 30;
+	background: #f7f7f7 !important;
+}

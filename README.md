@@ -9,7 +9,7 @@ Dieses Projekt verwendet das PHP-Framework Laravel.
 - [Dokumentation](https://laravel.com/docs/5.5)
 - [Laracasts](https://laracasts.com/)
 
-Außerdem die JavaScript-Runtime und Package-Manager [Node.js](https://nodejs.org/de/).
+Außerdem die JavaScript-Runtime und Package-Manager [Node.js].
 
 [Composer] ist ebenfalls keine schlechte Idee.
 
@@ -24,28 +24,28 @@ In beiden Fällen musst du dich mit deinem GitHub-Account anmelden.
 ### Webserver
 
 ##### _**ENTWEDER**_ Lokaler Webserver
-Du _**kannst**_ das Projekt über einen lokalen Webserver, wie beispielsweise [WampServer](http://wampserver.aviatechno.net/) oder [XAMPP](https://www.apachefriends.org/de/index.html) bedienen. Gehe in egal welchem Fall sicher, die aktuellste Version mit **PHP 7** zu verwenden.
-
-Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu stellen, dass alles funktioniert, gehe in dein WampServer- oder XAMPP-Instalationsverzeichnis und finde den Ordner, in dem die `php.exe` liegt. Bei Wamp ist das im Unterverzeichnis `\bin\php\php7.x.x`.
-
-Der Pfad dieses Ordners wird im folgenden Schritt (_in beiden Fällen_ ...) benötigt.
+> Du _**kannst**_ das Projekt über einen lokalen Webserver, wie beispielsweise [WampServer](http://wampserver.aviatechno.net/) oder [XAMPP](https://www.apachefriends.org/de/index.html) bedienen. Gehe in egal welchem Fall sicher, die aktuellste Version mit **PHP 7** zu verwenden.
+>
+> Beide Webserver bringen die notwendigen PHP-Versionen bereits mit. Um sicher zu stellen, dass alles funktioniert, gehe in dein WampServer- oder XAMPP-Instalationsverzeichnis und finde den Ordner, in dem die `php.exe` liegt. Bei Wamp ist das im Unterverzeichnis `\bin\php\php7.x.x`.
+>
+> Der Pfad dieses Ordners wird im folgenden Schritt (_in beiden Fällen_ ...) benötigt.
 
 ##### _**ODER**_ Standalone PHP
-Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie im Schritt `Entwicklung > Webserver` dieser README beschrieben, und so den Webdienst über ``artisan`` verfügbar zu machen.
-
-Um diese Variante zu verwenden, downloade von [hier](http://windows.php.net/download/) das entsprechende Archiv (sehr wahrscheinlich 'x64 Thread Safe') und extrahiere es in ein neues Verzeichnis (z.B. nach `"C:\Programme\PHP 7.2"`).
+> Alternativ zum lokalen Server ist es auch möglich, PHP direkt zu installieren und, wie im Schritt `Entwicklung > Webserver` dieser README beschrieben, und so den Webdienst über ``artisan`` verfügbar zu machen.
+>
+> Um diese Variante zu verwenden, downloade von [hier](http://windows.php.net/download/) das entsprechende Archiv (sehr wahrscheinlich 'x64 Thread Safe') und extrahiere es in ein neues Verzeichnis (z.B. nach `"C:\Programme\PHP 7.2"`).
 
 Diesen Installationspfad brauchst du im nächsten Schritt.
 
 ##### _IN BEIDEN FÄLLEN:_
 
-Öffne eine neue Console (`cmd.exe`) und führe folgenden Befehl aus:
-````bat
-SET PATH=%PATH%;C:\Dein\PHP\Ordner
-````
-Im Zweifelsfall ist es immer der Ordner, in dem sich die `php.exe` befindet.
-
-Desweiteren ist zu beachten, dass der Document-Root, also das Verzeichnis, auf das der Webserver zugreifen sollte, nicht das Projekt-Stammverzeichnis ist, sondern der Unterordner `\public`. In diesem ist auch die begehrte `index.php`.
+> Öffne eine neue Console (`cmd.exe`) und führe folgenden Befehl aus:
+> ````bat
+> SET PATH=%PATH%;C:\Dein\PHP\Ordner
+> ````
+> Im Zweifelsfall ist es immer der Ordner, in dem sich die `php.exe` befindet.
+>
+> Desweiteren ist zu beachten, dass der Document-Root, also das Verzeichnis, auf das der Webserver zugreifen sollte, nicht das Projekt-Stammverzeichnis ist, sondern der Unterordner `\public`. In diesem ist auch die begehrte `index.php`.
 
 Wenn das geschafft ist, gehe zum nächsten Schritt über.
 
@@ -59,17 +59,21 @@ Wenn die Command-line-Installation ausgibt, dass der Befehl `php` nicht gefunden
 
 Die Installation von Node.js ist eine Grundvoraussetzung, um das Projekt weiterentwickeln zu können.
 
-**1** Gehe auf [nodejs.org](https://nodejs.org/de/) und installiere die letze stabile Version (LTS)
+**1** Installiere die letze stabile Version von [Node.js] (LTS).
 
 **2** Öffne ein neues Terminal (`cmd.exe`) und navigiere zum Wurzelverzeichnis des Projektes.
 
-**2a** (für Dummies): Mit dem Befehl ``E:`` oder ``C:`` oder ``F:`` oder weiß der Kuckuck, welchen Laufwerksbuchstaben dein PC verwendet, wechselst du das Laufwerk.
-
-Mit ``cd "\gewünschter\ordner"`` springst du in ein Verzeichnis **ausgehend vom Laufwerk selbst**.
-
-Mit ``cd "sub\ordner\name"`` oder ``cd ".\sub\ordner\name"`` navigierst du **relativ zum Verzeichnis, in dem du gerade bist** - also dem Ordner, der vor dem `>` in deiner Console angezeigt wird. 
-
-Mit ``cd ..`` gehst du ein Verzeichnis zurück.
+> ##### Für Dummies und andere unbeholfene Kreaturen
+> - Mit dem Befehl ``E:`` oder ``C:`` oder ``F:`` oder weiß der Kuckuck, welchen Laufwerksbuchstaben dein PC verwendet, wechselst du das Laufwerk.
+> - Mit ``cd "\gewünschter\ordner"`` springst du in ein Verzeichnis **ausgehend vom Laufwerk selbst**.
+> - Mit ``cd "sub\ordner\name"`` oder ``cd ".\sub\ordner\name"`` navigierst du **relativ zum Verzeichnis, in dem du gerade bist** - also dem Ordner, der vor dem `>` in deiner Konsole angezeigt wird.
+> - Mit ``cd ..`` gehst du ein Verzeichnis zurück.
+>
+> Um in der Standard-Windows-Konsole zu kopieren, tue dies über das Kontextmenü (Rechtsklick); _nicht_ über `STRG + V`.
+>
+> Wenn du im Windows Explorer in einem offenem Verzeichnis `SHIFT + RMT` (Umschalt und rechte Maustaste) verwendest, erhälst du den Kontextmenüeintrag "Eingabeaufforderung hier öffen". Damit kannst du dir das ewige Rumnavigieren zum richtigen Ordner sparen.
+>
+> _(Funktioniert aber nur, wenn keine Datei im Ordner angewählt ist.)_
 
 **3** Wenn du einmal im Projekt-Verzeichnis angekommen bist, führst du folgenden Befehl aus:
 
@@ -79,7 +83,7 @@ npm install
 
 Daraufhin wird der **N**ode**P**ackage**M**anager von Node.js alle für das Projekt notwendigen Pakete in den Ordner ``\node_modules`` herunterladen.
 
-In der Zwischenzeit darfst du dir gern einen Kaffee kochen, denn _**Java**_Script heißt ja nicht grundlos so, oder du betest und hoffst bitterlich darauf, dass bei der Installation keine Fehler auftreten. Wie gesagt: _**Java**_Script.
+In der Zwischenzeit darfst du dir gern einen Kaffee kochen, denn _**Java**_Script heißt ja nicht grundlos so, oder du betest und hoffst bitterlich darauf, dass bei der Installation keine Fehler auftreten. Wie gesagt: ***Java***<span></span>Script.
 
 #### Installation abgeschlossen.
 
@@ -125,4 +129,5 @@ Natürlich ***in deinem eigenen Branch***, damit du nicht alles kaputt machst un
 
 P.S.: Fragen nehme ich jederzeit gerne entgegen.
 
+[Node.js]: https://nodejs.org/de/
 [Composer]: https://getcomposer.org/download/

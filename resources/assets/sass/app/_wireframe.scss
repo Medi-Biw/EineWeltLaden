@@ -194,6 +194,39 @@ nav#top-navbar {
 				display: block;
 				position: relative;
 				margin: 0 auto 2rem;
+				&.article-body {
+					position: relative;
+					display: block;
+					width: 100%;
+					p {
+						display: block;
+						margin: 0.5rem auto 1rem;
+						position: static;
+						@include media-breakpoint-up(md) {
+							max-width: 35rem;
+							text-align: justify;
+						}
+						&.img-container {
+							max-width: 100%;
+							margin: 2rem 0 2rem;
+							img {
+								display: block;
+								margin: 0 auto;
+								width: auto !important;
+							}
+							br {
+								display: none;
+							}
+						}
+						img {
+							position: relative;
+							margin: 0.5rem auto 1rem;
+							max-width: 100%;
+							border-radius: 3px;
+							box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5);
+						}
+					}
+				}
 				&.text-section {
 					max-width: 100%;
 					@include media-breakpoint-up(md) {
@@ -238,6 +271,29 @@ nav#top-navbar {
 						position: relative;
 						height: 100px;
 						pointer-events: none;
+					}
+				}
+			}
+			.posts-title {
+				padding: 0 0.5rem;
+				@include media-breakpoint-up(md) {
+					margin: 0 auto;
+					max-width: 35rem;
+					padding: 0 1.15rem;
+					box-sizing: border-box;
+				}
+			}
+			.posts-list {
+				position: relative;
+				.card {
+					display: block;
+					box-sizing: border-box;
+					margin: 0.5rem auto 1rem;
+					@include media-breakpoint-up(md) {
+						max-width: 35rem;
+					}
+					.card-body {
+						box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.3);
 					}
 				}
 			}
