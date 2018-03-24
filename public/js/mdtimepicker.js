@@ -19,12 +19,13 @@
 
 		this.format = function(format, hourPadding) {
 			var that = this, is24Hour = (format.match(/h/g) || []).length > 1;
+			Time.is24Hour = is24Hour;
+			console.log(Time.is24Hour);
 
 			return $.trim(format.replace(/(hh|h|mm|ss|tt|t)/g, function (e) { 
 				switch(e.toLowerCase()){
 					case 'h':
 						var hour = that.getHour(true);
-
 						return (hourPadding && hour < 10 ? '0' + hour : hour);
 					case 'hh': return (that.hour < 10 ? '0' + that.hour : that.hour);
 					case 'mm': return (that.minute < 10 ? '0' + that.minute : that.minute);
@@ -65,12 +66,12 @@
 				hour: $('<span class="mdtp__time_h">12</span>'),
 				dots: $('<span class="mdtp__timedots">:</span>'),
 				minute: $('<span class="mdtp__time_m">00</span>'),
-				am_pm: $('<span class="mdtp__ampm">AM</span>')
+				am_pm: $('<span class="mdtp__ampm" hidden>AM</span>')
 			},
 			clockHolder : {
 				wrapper: $('<section class="mdtp__clock_holder"></section>'),
-				am: $('<span class="mdtp__am">AM</span>'),
-				pm: $('<span class="mdtp__pm">PM</span>'),
+				am: $('<span class="mdtp__am">Vorm.</span>'),
+				pm: $('<span class="mdtp__pm">Nachm.</span>'),
 				clock: {
 					wrapper: $('<div class="mdtp__clock"></div>'),
 					dot: $('<span class="mdtp__clock_dot"></span>'),
@@ -80,7 +81,7 @@
 				buttonsHolder : {
 					wrapper: $('<div class="mdtp__buttons">'),
 					btnOk : $('<span class="mdtp__button ok">Ok</span>'),
-					btnCancel: $('<span class="mdtp__button cancel">Cancel</span>')
+					btnCancel: $('<span class="mdtp__button cancel">Abbrechen</span>')
 				}
 			}
 		};
@@ -213,7 +214,9 @@
 			var that = this;
 
 			this.selected.setHour(hour);
-			this.timepicker.timeHolder.hour.text(this.selected.getHour(true));
+			
+			var setTo = this.selected.getHour(true);
+			this.timepicker.timeHolder.hour.text(setTo);
 
 			this.timepicker.clockHolder.clock.hours.children('div').each(function (idx, div) {
 				var el = $(div), val = el.data('hour');

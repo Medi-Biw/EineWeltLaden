@@ -70,15 +70,9 @@ a {
 .openings-table {
 	tr:nth-child(4n+3),
 	tr:nth-child(4n+4) {
-		background: #ececec;
+		background: #f3f6f9;
 		input[readonly] {
 			background: #fff;
 		}
 	}
-}
-
-.timepicker_wrap {
-	position: absolute !important;
-	z-index: 90000;
-	width: 200px;
 }

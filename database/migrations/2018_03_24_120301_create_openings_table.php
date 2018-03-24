@@ -20,7 +20,9 @@ class CreateOpeningsTable extends Migration
 			$table->string('from_2', 24);
 			$table->string('till_2', 24);
             $table->string('text', 24);
-            $table->tinyInteger('override');
+            $table->tinyInteger('override')->default(0);
+            $table->tinyInteger('closed')->default(0);
+            $table->tinyInteger('two_times')->default(0);
             $table->timestamps();
         });
     }
