@@ -6,7 +6,9 @@
 	<div id="page-content">
 		<h1 class="posts-title">Letzte Beiträge
 			@auth
-				<a class="btn btn-outline-primary float-right" href="{{ route('posts.create') }}">Neuer Beitrag</a>
+				@if(auth()->user()->perm_posts)
+					<a class="btn btn-outline-primary float-right" href="{{ route('posts.create') }}">Neuer Beitrag</a>
+				@endif
 			@endauth</h1>
 		<br>
 		<section class="posts-list">
@@ -18,16 +20,44 @@
 							<small>{{ date_format($post->created_at, 'd.m.Y H:i') }} | {{ $post->user->name }}</small>
 						</h6>
 						<p class="card-text">
-							{{ substr(strip_tags($post->body), 0, 149) }}{{ (count_chars($post->body) > 150) ? '&nbsp;&hellip;' : '' }}
+							{{ substr(strip_tags($post->body), 0, 149) }}{!! (count_chars($post->body) > 150) ? '&nbsp;&hellip;' : '' !!}
 						</p>
 						<a href="{{ route('posts.show', $post->id) }}" class="card-link">Weiterlesen</a>
 						@auth
-							<a href="{{ route('posts.edit', $post->id) }}" class="card-link">Bearbeiten</a>
-							<a href="{{ route('posts.edit', $post->id) }}" class="card-link">Löschen</a>
+							@if(auth()->user()->perm_posts)
+								<a href="{{ route('posts.edit', $post->id) }}" class="card-link">Bearbeiten</a>
+								<a href="{{ route('posts.destroy', $post->id) }}" class="card-link"
+								   onclick="deleteArticle(event, {{ $post->id }}); return false;"
+								>Löschen</a>
+							@endif
 						@endauth
 					</div>
 				</div>
 			@endforeach
 		</section>
 	</div>
+	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+	<script>
+		function deleteArticle(e, id) {
+			e.preventDefault();
+			alertify
+				.cancelBtn("Abbrechen")
+				.confirm('Löschen bestätigen', function () {
+				$.ajax({
+					url: '{{ route('posts.index') }}/' + id,
+					type: 'DELETE',
+					success: function (result) {
+						result = $.parseJSON(result);
+						if (result.success === true)
+							window.location.reload();
+						else deleteError();
+					},
+					error: function() { deleteError() }
+				});
+			});
+		}
+		function deleteError() {
+			alertify.alert('<strong>Fehler beim Löschen des Artikels.</strong><br>Versuchen Sie es später nochmal.')
+		}
+	</script>
 @endsection

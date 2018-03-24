@@ -11,11 +11,23 @@
 |
 */
 
-Route::get('/', 'PagesController@index')->name('welcome');
+Route::get('/', 'PageController@index')->name('welcome');
 
-Route::get('/about/{sub}', 'PagesController@about')->name('about');
-Route::get('/laden/{sub}', 'PagesController@laden')->name('laden');
-Route::get('/kontakt/{sub}', 'PagesController@kontakt')->name('kontakt');
+Route::prefix('about')->group(function () {
+	Route::resource('/veranstaltungen', 'EventController',
+		['names' => [
+			'index' => 'events.index',
+			'create' => 'events.create',
+			'edit' => 'events.edit',
+			'update' => 'events.update',
+			'destroy' => 'events.destroy',
+		]]);
+	Route::get('/{sub}', 'PageController@about')->name('about');
+});
+
+Route::get('/laden/öffnungszeiten/', 'PageController@laden')->name('laden');
+Route::get('/laden/{sub}', 'PageController@laden')->name('laden');
+Route::get('/kontakt/{sub}', 'PageController@kontakt')->name('kontakt');
 
 Route::resource('posts', 'PostController');
 
@@ -23,4 +35,4 @@ Route::redirect('/kontakt', '/kontakt/info');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

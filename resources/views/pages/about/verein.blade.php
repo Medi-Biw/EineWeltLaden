@@ -12,7 +12,7 @@
 		<section class="text-section">
 			<h2>Verein und Weltladen</h2>
 			<p>
-				Im Dezember 1990 gründeten Mitglieder der Franziskusgemeinschaft Leutwitz zusammen mit Freunden und Bekannten den Verein "Pax et bonum" - Eine Welt Laden e.V.
+				<strong>Pax et bonum</strong> ist der lateinische Gruß der Franziskaner und bedeutet Friede und Heil. Er wurde als Name gewählt, weil der Verein 1990 von der Franziskusgemeinschaft in Leutwitz  zusammen mit Freunden und Bekannten gegründet, und damit eine Verbindung zu der Gemeinschaft hergestellt wurde.
 			</p>
 			<p>
 				Mit dem Verkauf von Waren aus Fairem Handel, der Unterstützung von Projekten in Entwicklungsländern und Info-Veranstaltungen in und um Bischofswerda will die Gruppe auf die ungerechte Welthandelssituation aufmerksam machen.

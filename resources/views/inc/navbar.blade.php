@@ -12,18 +12,37 @@
 		<ul class="navbar-nav mr-auto">
 			@auth
 				<li class="nav-item dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-						{{ Auth::user()->name }} <span class="caret"></span>
-					</a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"><span>{{ Auth::user()->name }}</span><span class="caret"></span></a>
 
-					<ul class="dropdown-menu">
-						<li>
-							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-								{{ csrf_field() }}
-							</form>
-						</li>
-					</ul>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ route('posts.create') }}">
+							<span class="icon" style="padding-left: 0.3rem"><i class="far fa-edit"></i></span> Neuer Beitrag
+						</a>
+						<a class="dropdown-item" href="{{ route('events.create') }}">
+							<span class="icon"><i class="far fa-calendar-edit "></i></span> Neue Veranstaltung
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">
+							<span class="icon"><i class="far fa-envelope"></i></span> Kontaktanfragen
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">
+							<span class="icon"><i class="far fa-clock"></i></span> Öffnungszeiten bearbeiten
+						</a>
+						<a class="dropdown-item" href="#">
+							<span class="icon"><i class="far fa-users"></i></span> Benutzer verwalten
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">
+							<span class="icon"><i class="far fa-user"></i></span> Mein Profil
+						</a>
+						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+							<span class="icon"><i class="far fa-sign-out"></i></span> Abmelden
+						</a>
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" hidden>
+							{{ csrf_field() }}
+						</form>
+					</div>
 				</li>
 			@endauth
 		</ul>
@@ -34,7 +53,7 @@
 			<li class="nav-item{{ Route::is('posts.*') ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('posts.index') }}">Aktuell</a>
 			</li>
-			<li class="nav-item{{ Route::is('about') ? ' active' : '' }}">
+			<li class="nav-item{{ (Route::is('about') || Route::is('events.*')) ? ' active' : '' }}">
 				<a class="nav-link" href="{{ route('about', ['sub' => 'verein']) }}">Über uns</a>
 			</li>
 			<li class="nav-item{{ Route::is('laden') ? ' active' : '' }}">

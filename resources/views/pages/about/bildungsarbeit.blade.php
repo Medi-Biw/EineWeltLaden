@@ -12,17 +12,19 @@
 		<section class="text-section">
 			<h2>Bildungsarbeit</h2>
 			<p>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+				Informations- und Bildungsarbeit gehört zu den Kriterien des Fairen Handels, denen sich auch der Bischofswerdaer Weltladen-Verein verpflichtet hat. Bildung beginnt mit der Produktinformation im Laden und beim Kundengespräch, zeigt sich im Schaufenster und umfasst Vorträge und Veranstaltungen für alle Altersgruppen.
 			</p>
 			<p>
-				At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Das können Länderberichte, Lesungen, Verkostungen oder Mitmach-Aktionen wie faires Kochen sein. Zusammen mit Bildungsreferenten des Sächsischen Entwicklungspolitischen Netzwerks (ENS) bieten wir verschiedenste Themen rund um den Fairen Handel an.
 			</p>
 			<p>
-				Sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				<strong>Kontakieren Sie uns! Gerne vermitteln wir Ihnen Referenten.</strong>
 			</p>
-		</section>
-		<section class="text-section">
-			<strong>@{{ HIER FEHLEN INHALTE }}</strong>
+			<p class="text-center">
+				<a href="{{ route('kontakt', ['sub' => 'info']) }}" class="btn btn-outline-primary btn-rounded btn-fa-hover">
+					&nbsp;&nbsp;Kontakt <i class="fal fa-caret-right faf-l faa-hover"></i>&nbsp;&nbsp;
+				</a>
+			</p>
 		</section>
 	</div>
 @endsection

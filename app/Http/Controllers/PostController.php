@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Post;
 use Illuminate\Http\Request;
+use Validator;
 
 class PostController extends Controller
 {
@@ -16,13 +17,32 @@ class PostController extends Controller
 		$this->middleware('auth', ['except' => ['index', 'show']]);
 		
 		$this->sidenavitems = [
-			['title' => 'Neuigkeiten-Blog',
+			[	'title' => 'Pax et bonum',
+				'link' => route('welcome')
+			],
+			[	'title' => 'Aktuell',
 				'link' => route('posts.index')
+			],
+			'divider',
+			[	'title' => 'Verein und Weltladen',
+				'link' => route('about', ['sub' => 'verein'])
+			],
+			[	'title' => 'Fair Trade',
+				'link' => route('laden', ['sub' => 'fair-trade'])
+			],
+			[	'title' => 'Veranstaltungen',
+				'link' => route('about', ['sub' => 'veranstaltungen'])
+			],
+			[	'title' => 'Erreichen Sie uns',
+				'link' => route('kontakt', ['sub' => 'info'])
+			],
+			[	'title' => 'Impressum',
+				'link' => route('kontakt', ['sub' => 'impressum'])
 			],
 		];
 		
 		$this->sidenavreturn = [
-			['title' => '<i class="fa fa-angle-left"></i>&nbsp;&nbsp;Zurück zu den Beiträgen',
+			['title' => '<i class="fa fa-angle-left"></i>&nbsp;&nbsp;Zurück zur Übersicht',
 				'link' => route('posts.index')
 			],
 		];
@@ -47,6 +67,7 @@ class PostController extends Controller
 	 */
 	public function create(Request $request)
 	{
+		if (!auth()->user()->perm_posts) abort(403);
 		return view('pages.posts.create')->with(['request' => $request, 'sidenavitems' => $this->sidenavreturn]);
 	}
 	
@@ -58,10 +79,20 @@ class PostController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$this->validate($request, [
+		if (!auth()->user()->perm_posts) abort(403);
+		
+		$validator = Validator::make($request->all(), [
 			'title' => 'required|max:255',
-			'body' => 'required'
+			'body' => 'required|min:10'
 		]);
+		
+		if (!empty($validator->errors()->toArray()))
+		{
+			$messages = [];
+			foreach ($validator->errors()->toArray() as $error)
+				$messages[] = $error[0];
+			return redirect()->route('posts.create')->with(['errors' => $messages])->withInput();
+		}
 		
 		$post = new Post;
 		$post->title = $request->get('title');
@@ -84,7 +115,7 @@ class PostController extends Controller
 	 */
 	public function show(Request $request, $id)
 	{
-		$post = Post::where('id', $id)->with(['user'])->get()->first();
+		$post = (new Post)->where('id', $id)->with(['user'])->get()->first();
 		
 		if (count($post) <> 1)
 			return abort(404);
@@ -100,7 +131,9 @@ class PostController extends Controller
 	 */
 	public function edit(Request $request, $id)
 	{
-		$post = Post::where('id', $id)->with(['user'])->get()->first();
+		if (!auth()->user()->perm_posts) abort(403);
+		
+		$post = (new Post)->where('id', $id)->with(['user'])->get()->first();
 		
 		if (count($post) <> 1)
 			return abort(500);
@@ -117,10 +150,20 @@ class PostController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		$this->validate($request, [
+		if (!auth()->user()->perm_posts) abort(403);
+		
+		$validator = Validator::make($request->all(), [
 			'title' => 'required|max:255',
-			'body' => 'required'
+			'body' => 'required|min:10'
 		]);
+		
+		if (!empty($validator->errors()->toArray()))
+		{
+			$messages = [];
+			foreach ($validator->errors()->toArray() as $error)
+				$messages[] = $error[0];
+			return redirect()->route('posts.edit', $id)->with(['errors' => $messages])->withInput();
+		}
 		
 		$post = Post::findOrFail($id);
 		$post->title = $request->get('title');
@@ -140,6 +183,13 @@ class PostController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		if (!auth()->user()->perm_posts) return json_encode(['success' => false]);
+		
+		$post = Post::findOrFail($id);
+		
+		if ($post->delete())
+			return json_encode(['success' => true]);
+		
+		return json_encode(['success' => false]);
 	}
 }

@@ -22,15 +22,20 @@
 				<p>
 					<span>
 						<strong style="display: inline-block; width: 150px;">Email</strong>
-						info@example.com
+						<a href="#" id="revmail">weltladen-biw@web.de</a>
 					</span>
 					<br>
 					<span>
 						<strong style="display: inline-block; width: 150px;">Telefon im Laden</strong>
-						0 35 94/70 63 39
+						 0151 51 09 76 32
 					</span>
 				</p>
 			</address>
+			<p style="margin-top: 20px;">
+				<a href="{{ route('laden', ['sub' => 'standort']) }}" class="btn btn-outline-primary btn-rounded btn-fa-hover" style="min-width: 200px; text-align: right;">
+					&nbsp;&nbsp;Standort <i class="fal fa-caret-right faf-l faa-hover"></i>&nbsp;&nbsp;
+				</a>
+			</p>
 			<p style="margin-top: 20px;">
 				<a href="{{ route('laden', ['sub' => 'öffnungszeiten']) }}" class="btn btn-outline-primary btn-rounded btn-fa-hover" style="min-width: 200px; text-align: right;">
 					&nbsp;&nbsp;Öffnungszeiten <i class="fal fa-caret-right faf-l faa-hover"></i>&nbsp;&nbsp;
@@ -42,17 +47,17 @@
 				</a>
 			</p>
 		</section>
-		<section class="text-section">
+		{{--<section class="text-section">
 			<h3>Ansprechpartner</h3>
 			<div class="row card-holder">
 				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Sigrun Nützsche</h5>
-							<p class="card-text">
+							--}}{{--<p class="card-text">
 								<i class="far fa-phone-square faf-r"></i>
 								<a href="tel:+493594701181">0 35 94/70 11 81</a>
-							</p>
+							</p>--}}{{--
 						</div>
 					</div>
 				</div>
@@ -60,14 +65,26 @@
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">Helgard Hopf</h5>
-							<p class="card-text">
+							--}}{{--<p class="card-text">
 								<i class="far fa-phone-square faf-r"></i>
 								<a href="tel:+493594701176">0 35 94/70 11 76</a>
-							</p>
+							</p>--}}{{--
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</section>--}}
 	</div>
 @endsection
+
+@push('scripts')
+
+	<script>
+		$(document).ready(function () {
+			$('#revmail').on('mousedown', function () {
+				let em = 'ed.'+'be'+'w@'+'w'+''+'ib-n'+''+'edalt'+'lew'+':'+''+'o'+'tli'+''+'am';
+				this.href = em.split('').reverse().join('');
+			});
+		});
+	</script>
+@endpush

@@ -7,7 +7,7 @@
 	<div id="page-content">
 		<h1>Eine-Welt-Laden</h1>
 		<section class="wide-image-section">
-			<img src="/storage/fair-trade.jpg">
+			<img src="{{ asset('storage/warenkorb.jpg') }}">
 		</section>
 		<section class="text-section">
 			<h3>Was ist Fairer Handel?</h3>

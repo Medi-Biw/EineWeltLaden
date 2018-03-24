@@ -17,7 +17,11 @@
 			</address>
 
 			<h4>Vertreten durch:</h4>
-			<p><strong>@{{ NAME- UND ADRESSE EINES VORSTANDSMITGLIEDES }}</strong></p>
+			<address>
+				<strong>Helgard Hopf</strong>
+				<br><em>Vereinsvorsitzende</em>
+				<br><strong>@{{ ADDRESSE FRAU HOPFS }}</strong>
+			</address>
 
 			<h4>Kontakt:</h4>
 			<p>
@@ -29,7 +33,7 @@
 			<p>
 				Eintragung im Vereinsregister.
 				<br> Registergericht: Amtsgericht Dresden
-				<br> Registernummer: <strong>{<span></span>{ {{ strtoupper('Vereinsregisternummer') }} }<span></span>}</strong>
+				<br> Registernummer: VR 30738
 			</p>
 
 			<h4>Umsatzsteuer:</h4>
@@ -39,7 +43,10 @@
 			</p>
 
 			<h4>Verantwortlich f&uuml;r den Inhalt nach &sect; 55 Abs. 2 RStV:</h4>
-			<p><strong>@{{ NAME- UND ADRESSE EINES VERANTWORTLICHEN }}</strong></p>
+			<address>
+				<strong>Helgard Hopf</strong>
+				<br><em>Vereinsvorsitzende</em>
+			</address>
 		</section>
 		<section class="text-section">
 			<hr>

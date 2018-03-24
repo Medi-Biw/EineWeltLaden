@@ -46,3 +46,23 @@ a {
 	z-index: 30;
 	background: #f7f7f7 !important;
 }
+
+.alertify {
+	z-index: 9999;
+	nav button {
+		padding-left: 13px !important;
+		padding-right: 13px !important;
+	}
+}
+
+.icon {
+	display: inline-block;
+	width: 1.4rem;
+	height: 1rem;
+	text-align: center;
+	margin-right: 0.25rem;
+}
+
+.dropdown-item {
+	padding-left: 1rem;
+}

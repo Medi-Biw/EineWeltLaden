@@ -22,6 +22,8 @@
 			<a href="{{ route('kontakt', ['sub' => 'info']) }}" class="btn btn-outline-primary btn-rounded btn-fa-hover">
 				&nbsp;&nbsp;Kontakt <i class="fal fa-caret-right faf-l faa-hover"></i>&nbsp;&nbsp;
 			</a>
+			<img src="{{ asset('storage/aussen_1.jpg') }}">
+			<span class="img-credit">Unser Laden &mdash; Außenansicht</span>
 		</section>
 	</div>
 @endsection

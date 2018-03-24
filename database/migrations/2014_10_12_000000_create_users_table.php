@@ -19,7 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
-			$table->integer('admin_lvl')->unsigned()->nullable()->default(0);
+			$table->integer('perm_users')->unsigned()->nullable()->default(0);
+			$table->integer('perm_posts')->unsigned()->nullable()->default(0);
+			$table->integer('perm_events')->unsigned()->nullable()->default(0);
+			$table->integer('perm_openings')->unsigned()->nullable()->default(0);
             $table->timestamps();
         });
     }
