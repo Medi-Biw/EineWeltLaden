@@ -25,7 +25,10 @@ Route::prefix('about')->group(function () {
 	Route::get('/{sub}', 'PageController@about')->name('about');
 });
 
-Route::get('/laden/öffnungszeiten/', 'PageController@laden')->name('laden');
+Route::prefix('panel')->group(function () {
+	Route::get('öffnungszeiten', 'OpeningsController@edit')->name('openings.edit');
+});
+
 Route::get('/laden/{sub}', 'PageController@laden')->name('laden');
 Route::get('/kontakt/{sub}', 'PageController@kontakt')->name('kontakt');
 

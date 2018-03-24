@@ -1,9 +1,9 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-light" id="top-navbar">
 	<div class="brand-wrapper">
 		<a class="navbar-brand d-inline-block d-lg-none d-xl-none" href="{{ route('welcome') }}">Pax et bonum <small>&mdash; Eine Welt Laden e.V.</small></a>
-		<div id="brand-image" class="d-md-none d-none d-lg-block d-xl-block">
+		<a id="brand-image" class="d-md-none d-none d-lg-block d-xl-block" href="{{ route('welcome') }}">
 			<img src="/storage/ewl-header-logo.png">
-		</div>
+		</a>
 	</div>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -15,24 +15,38 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true"><span>{{ Auth::user()->name }}</span><span class="caret"></span></a>
 
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="{{ route('posts.create') }}">
-							<span class="icon" style="padding-left: 0.3rem"><i class="far fa-edit"></i></span> Neuer Beitrag
-						</a>
-						<a class="dropdown-item" href="{{ route('events.create') }}">
-							<span class="icon"><i class="far fa-calendar-edit "></i></span> Neue Veranstaltung
-						</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">
-							<span class="icon"><i class="far fa-envelope"></i></span> Kontaktanfragen
-						</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">
-							<span class="icon"><i class="far fa-clock"></i></span> Öffnungszeiten bearbeiten
-						</a>
-						<a class="dropdown-item" href="#">
-							<span class="icon"><i class="far fa-users"></i></span> Benutzer verwalten
-						</a>
-						<div class="dropdown-divider"></div>
+						@if(auth()->user()->perm_posts)
+							<a class="dropdown-item" href="{{ route('posts.create') }}">
+								<span class="icon" style="padding-left: 0.3rem"><i class="far fa-edit"></i></span> Neuer Beitrag
+							</a>
+						@endif
+						@if(auth()->user()->perm_events)
+							<a class="dropdown-item" href="{{ route('events.create') }}">
+								<span class="icon"><i class="far fa-calendar-edit "></i></span> Neue Veranstaltung
+							</a>
+						@endif
+						@if(auth()->user()->perm_posts || auth()->user()->perm_events)
+							<div class="dropdown-divider"></div>
+						@endif
+						@if(auth()->user()->perm_contact)
+							<a class="dropdown-item" href="#">
+								<span class="icon"><i class="far fa-envelope"></i></span> Kontaktanfragen
+							</a>
+							<div class="dropdown-divider"></div>
+						@endif
+						@if(auth()->user()->perm_openings)
+							<a class="dropdown-item" href="{{ route('openings.edit') }}">
+								<span class="icon"><i class="far fa-clock"></i></span> Öffnungszeiten bearbeiten
+							</a>
+						@endif
+						@if(auth()->user()->perm_users)
+							<a class="dropdown-item" href="#">
+								<span class="icon"><i class="far fa-users"></i></span> Benutzer verwalten
+							</a>
+						@endif
+						@if(auth()->user()->perm_openings || auth()->user()->perm_users)
+							<div class="dropdown-divider"></div>
+						@endif
 						<a class="dropdown-item" href="#">
 							<span class="icon"><i class="far fa-user"></i></span> Mein Profil
 						</a>

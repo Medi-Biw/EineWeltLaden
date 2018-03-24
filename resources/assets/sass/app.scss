@@ -66,3 +66,19 @@ a {
 .dropdown-item {
 	padding-left: 1rem;
 }
+
+.openings-table {
+	tr:nth-child(4n+3),
+	tr:nth-child(4n+4) {
+		background: #ececec;
+		input[readonly] {
+			background: #fff;
+		}
+	}
+}
+
+.timepicker_wrap {
+	position: absolute !important;
+	z-index: 90000;
+	width: 200px;
+}
