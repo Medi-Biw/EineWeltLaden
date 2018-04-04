@@ -13,28 +13,28 @@
 				@csrf
 				<div class="form-group">
 					<label for="name">Vor- und Nachname</label>
-					<input id="name" class="form-control{{ $errors->contact->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}"/>
+					<input id="name" class="form-control{{ $errors->contact->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus />
 					<div class="invalid-feedback">
 						{{ $errors->contact->first('name') }}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="email">Ihre Email-Adresse</label>
-					<input id="email" class="form-control{{ $errors->contact->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}"/>
+					<input type="email" id="email" class="form-control{{ $errors->contact->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required />
 					<div class="invalid-feedback">
 						{{ $errors->contact->first('email') }}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="subject">Betreff</label>
-					<input id="subject" class="form-control{{ $errors->contact->has('subject') ? ' is-invalid' : '' }}" name="subject" value="{{ old('subject') }}"/>
+					<input id="subject" class="form-control{{ $errors->contact->has('subject') ? ' is-invalid' : '' }}" name="subject" value="{{ old('subject') }}" required />
 					<div class="invalid-feedback">
 						{{ $errors->contact->first('subject') }}
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="message">Ihre Mitteilung</label>
-					<textarea id="message" class="form-control{{ $errors->contact->has('message') ? ' is-invalid' : '' }}" name="message" rows="7" style="min-height: 150px;">{{ old('message') }}</textarea>
+					<textarea id="message" class="form-control{{ $errors->contact->has('message') ? ' is-invalid' : '' }}" name="message" rows="7" style="min-height: 150px;" required>{{ old('message') }}</textarea>
 					<div class="invalid-feedback">
 						{{ $errors->contact->first('message') }}
 					</div>
