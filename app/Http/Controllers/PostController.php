@@ -36,8 +36,8 @@ class PostController extends Controller
 			[	'title' => 'Erreichen Sie uns',
 				'link' => route('kontakt', ['sub' => 'info'])
 			],
-			[	'title' => 'Impressum',
-				'link' => route('kontakt', ['sub' => 'impressum'])
+			[	'title' => 'Öffnungszeiten',
+				'link' => route('laden', ['sub' => 'öffnungszeiten'])
 			],
 		];
 		

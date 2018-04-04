@@ -16,9 +16,7 @@
 						   value="{{ old('email') }}" required autofocus>
 
 					@if ($errors->has('email'))
-						<span class="help-block">
-										<strong>{{ $errors->first('email') }}</strong>
-									</span>
+						<span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
 					@endif
 				</div>
 			</div>

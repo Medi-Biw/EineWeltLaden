@@ -11,8 +11,7 @@
 	@stack('meta')
 
 	<title>@yield('page_title')@yield('sub')@yield('title', 'Pax et bonum - Eine Welt Laden e.V.')</title>
-
-	<link href="{{ asset('css/fa-svg-with-js.css') }}" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
 	<link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

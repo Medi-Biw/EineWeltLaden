@@ -13,6 +13,8 @@
 
 Route::get('/', 'PageController@index')->name('welcome');
 
+Route::get('/testmail', 'EmailController@test')->middleware(['auth']);
+
 Route::prefix('about')->group(function () {
 	Route::resource('/veranstaltungen', 'EventController',
 		['names' => [
@@ -25,8 +27,12 @@ Route::prefix('about')->group(function () {
 	Route::get('/{sub}', 'PageController@about')->name('about');
 });
 
-Route::prefix('panel')->group(function () {
-	Route::get('öffnungszeiten', 'OpeningsController@edit')->name('openings.edit');
+Route::prefix('panel')->middleware(['auth'])->group(function () {
+	Route::get('/oeffnungszeiten', 'OpeningsController@edit')->name('openings.edit');
+	Route::put('/oeffnungszeiten', 'OpeningsController@update');
+	Route::get('/profil', 'ProfileController@index')->name('profile');
+	Route::put('/profil', 'ProfileController@update');
+	Route::put('/profil/password', 'ProfileController@password');
 });
 
 Route::get('/laden/{sub}', 'PageController@laden')->name('laden');
@@ -36,6 +42,13 @@ Route::resource('posts', 'PostController');
 
 Route::redirect('/kontakt', '/kontakt/info');
 
-Auth::routes();
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 //Route::get('/home', 'HomeController@index')->name('home');

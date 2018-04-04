@@ -15,7 +15,7 @@ class OpeningsController extends Controller
     public function edit()
     {
 		if (!auth()->user()->perm_openings) abort(403);
-		$data = Openings::get()->keyBy('id')->toArray();
+		$data = (new Openings)->get()->keyBy('id')->toArray();
         return view('pages.panel.openings')->with(['data' => $data]);
     }
     
@@ -23,12 +23,17 @@ class OpeningsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Openings  $openings
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Openings $openings)
+    public function update(Request $request)
     {
 		if (!auth()->user()->perm_openings) abort(403);
-        //
+    
+		$days = $request->input('days');
+		
+		foreach ($days as $day => $data)
+			(new Openings)->findOrFail($day)->update($data);
+		
+		return redirect()->route('openings.edit')->with(['success' => 'Änderungen erfolgreich gespeichert.']);
     }
 }

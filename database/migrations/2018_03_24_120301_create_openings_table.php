@@ -15,11 +15,11 @@ class CreateOpeningsTable extends Migration
     {
         Schema::create('openings', function (Blueprint $table) {
             $table->string('id', 24)->primary();
-            $table->string('from_1', 24);
-            $table->string('till_1', 24);
-			$table->string('from_2', 24);
-			$table->string('till_2', 24);
-            $table->string('text', 24);
+            $table->string('from_1', 24)->nullable();
+            $table->string('till_1', 24)->nullable();
+			$table->string('from_2', 24)->nullable();
+			$table->string('till_2', 24)->nullable();
+            $table->string('text', 24)->nullable();
             $table->tinyInteger('override')->default(0);
             $table->tinyInteger('closed')->default(0);
             $table->tinyInteger('two_times')->default(0);

@@ -47,7 +47,7 @@
 						@if(auth()->user()->perm_openings || auth()->user()->perm_users)
 							<div class="dropdown-divider"></div>
 						@endif
-						<a class="dropdown-item" href="#">
+						<a class="dropdown-item" href="{{ route('profile') }}">
 							<span class="icon"><i class="far fa-user"></i></span> Mein Profil
 						</a>
 						<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

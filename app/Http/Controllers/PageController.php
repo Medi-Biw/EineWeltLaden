@@ -34,8 +34,8 @@ class PageController extends Controller
 			[	'title' => 'Erreichen Sie uns',
 				'link' => route('kontakt', ['sub' => 'info'])
 			],
-			[	'title' => 'Impressum',
-				'link' => route('kontakt', ['sub' => 'impressum'])
+			[	'title' => 'Öffnungszeiten',
+				'link' => route('laden', ['sub' => 'öffnungszeiten'])
 			],
 		];
 		
@@ -89,10 +89,7 @@ class PageController extends Controller
 			],
 			[	'title' => 'Fairer Handel',
 				'link' => route('laden', ['sub' => 'fair-trade'])
-			],/*
-			[	'title' => 'Bestellung',
-				'link' => route('laden', ['sub' => 'bestellung'])
-			],*/
+			],
 			[	'title' => 'Mitarbeiter',
 				'link' => route('laden', ['sub' => 'mitarbeiter'])
 			],
@@ -108,7 +105,6 @@ class PageController extends Controller
 		
 		if		($request->is('laden/sortiment'))		$include = 'pages.laden.sortiment';
 		elseif	($request->is('laden/fair-trade'))		$include = 'pages.laden.fair-trade';
-		/*elseif	($request->is('laden/bestellung'))	$include = 'pages.laden.bestellung';*/
 		elseif	($request->is('laden/mitarbeiter'))		$include = 'pages.laden.mitarbeiter';
 		elseif	($request->is('laden/standort'))		$include = 'pages.laden.standort';
 		elseif	($request->is('laden/öffnungszeiten'))	$include = 'pages.laden.openings';
