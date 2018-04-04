@@ -17,19 +17,26 @@ class Email extends Mailable
 	{
 		foreach ($this->attributes as $a => $v)
 		{
+			if ($a == 'view' && is_array($v))
+			{
+				$this->view($v[0])->with($v[1]);
+				continue;
+			}
+			
 			if (method_exists($this, $a))
 			{
-				if (empty($v))
-				{
-					if ($a == 'replyTo')
-						$this->replyTo(config('mail.reply_to.address'), config('mail.reply_to.name'));
-					else
-						continue;
-				}
 				if (is_array($v))
-					call_user_func_array($this->{$a}, $v);
+					call_user_func_array([$this, $a], $v);
 				else
 					$this->{$a}($v);
+				
+				continue;
+			}
+			
+			if (method_exists($this, $v))
+			{
+				if ($a == 'replyTo')
+					$this->replyTo(config('mail.reply_to.address'), config('mail.reply_to.name'));
 			}
 		}
 	}

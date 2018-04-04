@@ -122,7 +122,9 @@ return [
 		'name' => 'Name',
 		'email' => 'Email',
 		'password_old' => 'Aktuelles Passwort',
-		'password' => 'Passwort'
+		'password' => 'Passwort',
+		'subject' => 'Betreff',
+		'message' => 'Nachricht',
 	],
 
 ];

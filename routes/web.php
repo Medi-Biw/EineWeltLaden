@@ -37,6 +37,7 @@ Route::prefix('panel')->middleware(['auth'])->group(function () {
 
 Route::get('/laden/{sub}', 'PageController@laden')->name('laden');
 Route::get('/kontakt/{sub}', 'PageController@kontakt')->name('kontakt');
+Route::post('/kontakt/formular', 'EmailController@contact');
 
 Route::resource('posts', 'PostController');
 
