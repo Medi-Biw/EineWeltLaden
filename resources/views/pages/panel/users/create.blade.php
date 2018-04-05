@@ -36,7 +36,7 @@
 				</div>
 				<div class="form-group">
 					<label for="password">Passwort</label>
-					<input id="password" name="password" type="password" required
+					<input id="password" name="password" type="password" autocomplete="new-password" required minlength="6"
 						   class="form-control{{ $errors->cruser->has('password') ? ' is-invalid' : '' }}"/>
 					@if($errors->cruser->has('password'))
 						<div class="invalid-feedback">
@@ -47,8 +47,8 @@
 				</div>
 				<div class="form-group">
 					<label for="password_confirmation">Passwort wiederholen</label>
-					<input id="password_confirmation" name="password_confirmation" type="password" required
-						   class="form-control"/>
+					<input id="password_confirmation" name="password_confirmation" type="password"
+						   autocomplete="new-password" required minlength="6" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label>

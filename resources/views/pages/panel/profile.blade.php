@@ -38,7 +38,7 @@
 				@method('PUT')
 				<div class="form-group">
 					<label for="password_old">Aktuelles Passwort</label>
-					<input type="password" id="password_old" name="password_old" value=""
+					<input type="password" id="password_old" name="password_old" autocomplete="current-password" value=""
 						   class="form-control{{ $errors->password->has('password_old') ? ' is-invalid' : '' }}" />
 					@if($errors->password->has('password_old'))
 						<div class="invalid-feedback">
@@ -48,7 +48,7 @@
 				</div>
 				<div class="form-group">
 					<label for="password">Neues Passwort</label>
-					<input type="password" id="password" name="password" value=""
+					<input type="password" id="password" name="password" autocomplete="new-password" value="" minlength="6"
 						   class="form-control{{ $errors->password->has('password') ? ' is-invalid' : '' }}" />
 					@if($errors->password->has('password'))
 						<div class="invalid-feedback">
@@ -58,7 +58,8 @@
 				</div>
 				<div class="form-group">
 					<label for="password_confirmation">Neues Passwort wiederholen</label>
-					<input type="password" id="password_confirmation" name="password_confirmation" value=""
+					<input type="password" id="password_confirmation" name="password_confirmation"
+						   autocomplete="new-password" value="" minlength="6"
 						   class="form-control{{ $errors->password->has('password_confirmation') ? ' is-invalid' : '' }}" />
 					@if($errors->password->has('password_confirmation'))
 						<div class="invalid-feedback">
