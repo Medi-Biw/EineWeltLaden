@@ -159,6 +159,7 @@ class UserController extends Controller
 	public function destroy($id)
 	{
 		if (!auth()->user()->perm_users) return response(403)->json(['success' => false]);
+		if ($id === 1) return response(403)->json(['success' => false]);
 		
 		$event = User::findOrFail($id);
 		

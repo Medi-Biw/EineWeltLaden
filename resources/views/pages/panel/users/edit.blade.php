@@ -43,7 +43,7 @@
 				<div class="form-group">
 					<label for="password">Neues Passwort</label>
 					<input id="password" name="password" type="password" autocomplete="new-password" minlength="6"
-					class="form-control{{ $errors->cruser->has('password') ? ' is-invalid' : '' }}"/>
+						   class="form-control{{ $errors->cruser->has('password') ? ' is-invalid' : '' }}"/>
 					@if($errors->cruser->has('password'))
 						<div class="invalid-feedback">
 							{{ $errors->cruser->first('password') }}
@@ -56,7 +56,8 @@
 				</div>
 				<div class="form-group">
 					<label for="password_confirmation">Neues Passwort wiederholen</label>
-					<input id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password"
+					<input id="password_confirmation" name="password_confirmation" type="password"
+						   autocomplete="new-password"
 						   minlength="6" class="form-control"/>
 				</div>
 				<div class="form-group">
@@ -87,9 +88,14 @@
 				</div>
 				<div class="form-group py-3">
 					<div class="row">
-						<div class="col">
-							<button type="button" class="btn btn-outline-danger btn-sm" onclick="delUser(event, '{{ action('UserController@destroy', $user->id) }}');">Löschen</button>
-						</div>
+						@if($user->id != auth()->id())
+							<div class="col">
+								<button type="button" class="btn btn-outline-danger btn-sm"
+										onclick="delUser(event, '{{ action('UserController@destroy', $user->id) }}');">
+									Löschen
+								</button>
+							</div>
+						@endif
 						<div class="col text-right">
 							<button type="submit" class="btn btn-primary">Änderungen speichern</button>
 						</div>
