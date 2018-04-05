@@ -70,7 +70,7 @@ a {
 #openings-card {
 	display: block;
 	position: relative;
-	margin-bottom: 300px;
+	margin-bottom: 110px;
 	padding-bottom: 56px;
 	.openings-table {
 		margin: 0;
@@ -139,4 +139,15 @@ a {
 
 .font-style-normal {
 	font-style: normal !important;
+}
+
+.table-bordered {
+	th, td {
+		border-color: #aaa !important;
+	}
+}
+
+.cell-narrow {
+	width: 0;
+	white-space: nowrap;
 }

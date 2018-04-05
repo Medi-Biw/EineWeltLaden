@@ -33,6 +33,7 @@ Route::prefix('panel')->middleware(['auth'])->group(function () {
 	Route::get('/profil', 'ProfileController@index')->name('profile');
 	Route::put('/profil', 'ProfileController@update');
 	Route::put('/profil/password', 'ProfileController@password');
+	Route::resource('user', 'UserController');
 });
 
 Route::get('/laden/{sub}', 'PageController@laden')->name('laden');

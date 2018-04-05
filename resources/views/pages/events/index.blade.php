@@ -73,7 +73,7 @@
 							@if(auth()->user()->perm_events)
 								<a href="{{ route('events.edit', $event->id) }}" class="card-link">Bearbeiten</a>
 								<a href="{{ route('events.destroy', $event->id) }}" class="card-link"
-								   onclick="deleteEvent(event, {{ $event->id }}); return false;"
+								   onclick="deleteEvent(event, '{{ route('events.destroy', $event->id) }}'); return false;"
 								>Löschen</a>
 							@endif
 						@endauth
@@ -87,18 +87,17 @@
 	</div>
 	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 	<script>
-		function deleteEvent(e, id) {
+		function deleteEvent(e, url) {
 			e.preventDefault();
 			alertify
 				.cancelBtn("Abbrechen")
 				.confirm('Löschen bestätigen', function () {
 					$.ajax({
-						url: '{{ route('events.index') }}/' + id,
+						url: url,
 						type: 'DELETE',
 						success: function (result) {
-							result = $.parseJSON(result);
 							if (result.success === true)
-								window.location.reload();
+								window.location = '{{ route('events.index') }}';
 							else deleteError();
 						},
 						error: function() { deleteError() }

@@ -27,7 +27,7 @@
 							@if(auth()->user()->perm_posts)
 								<a href="{{ route('posts.edit', $post->id) }}" class="card-link">Bearbeiten</a>
 								<a href="{{ route('posts.destroy', $post->id) }}" class="card-link"
-								   onclick="deleteArticle(event, {{ $post->id }}); return false;"
+								   onclick="deleteArticle(event, '{{ route('posts.destroy', $post->id) }}'); return false;"
 								>Löschen</a>
 							@endif
 						@endauth
@@ -38,18 +38,17 @@
 	</div>
 	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 	<script>
-		function deleteArticle(e, id) {
+		function deleteArticle(e, url) {
 			e.preventDefault();
 			alertify
 				.cancelBtn("Abbrechen")
 				.confirm('Löschen bestätigen', function () {
 				$.ajax({
-					url: '{{ route('posts.index') }}/' + id,
+					url: url,
 					type: 'DELETE',
 					success: function (result) {
-						result = $.parseJSON(result);
 						if (result.success === true)
-							window.location.reload();
+							window.location = '{{ route('posts.index') }}';
 						else deleteError();
 					},
 					error: function() { deleteError() }

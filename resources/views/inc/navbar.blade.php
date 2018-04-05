@@ -40,7 +40,7 @@
 							</a>
 						@endif
 						@if(auth()->user()->perm_users)
-							<a class="dropdown-item" href="#">
+							<a class="dropdown-item" href="{{ route('user.index') }}">
 								<span class="icon"><i class="far fa-users"></i></span> Benutzer verwalten
 							</a>
 						@endif

@@ -10,6 +10,9 @@ class EventController extends Controller
 {
 	public $sidenavreturn;
 	
+	/**
+	 * EventController constructor.
+	 */
 	public function __construct()
 	{
 		$this->middleware('auth', ['except' => ['index', 'show']]);
@@ -55,12 +58,13 @@ class EventController extends Controller
 			'events' => $events,
 		]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+	
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @param  Request $request
+	 * @return \Illuminate\Http\Response
+	 */
     public function create(Request $request)
     {
 		if (!auth()->user()->perm_events) abort(403);
@@ -70,7 +74,21 @@ class EventController extends Controller
 			'sidenavitems' => $this->sidenavreturn
 		]);
     }
-
+	
+	/**
+	 * @param  $date
+	 * @return string
+	 */
+	public function eventDate($date)
+	{
+		if ($date)
+		{
+			$dates = explode(' bis ', $date);
+			$date = strftime('%g-%m-%d', strtotime($dates[0])) . '/' . strftime('%g-%m-%d', strtotime($dates[1]));
+		}
+		return $date;
+	}
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -100,7 +118,7 @@ class EventController extends Controller
 	
 		$event = new Event;
 		$event->title = $request->get('title');
-		$event->date = $request->get('date') ?? null;
+		$event->date = $this->eventDate($request->get('date') ?? null);
 	
 		$base64 = null;
 		
@@ -120,22 +138,11 @@ class EventController extends Controller
 	
 		return redirect()->route('events.create')->with(['error' => 'Beim Speichern des Beitrages ist ein Fehler aufgetreten.']);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
-    /*public function show(Event $event)
-    {
-        //
-    }*/
 	
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param Request $request
+	 * @param  Request $request
 	 * @param  \App\Event $event
 	 * @return \Illuminate\Http\Response
 	 */
@@ -151,14 +158,14 @@ class EventController extends Controller
 			'event' => $event
 		]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Event  $event
-     * @return \Illuminate\Http\Response
-     */
+	
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  int $event
+	 * @return \Illuminate\Http\Response
+	 */
     public function update(Request $request, int $event)
     {
 		if (!auth()->user()->perm_events) abort(403);
@@ -182,15 +189,7 @@ class EventController extends Controller
 		$event = Event::findOrFail($event);
 		$event->title = $request->get('title');
 		
-		$date = $request->get('date') ?? null;
-		
-		if ($date)
-		{
-			$dates = explode(' bis ', $date);
-			$date = strftime('%g-%m-%d', strtotime($dates[0])) . '/' . strftime('%g-%m-%d', strtotime($dates[1]));
-		}
-		
-		$event->date = $date;
+		$event->date = $this->eventDate($request->get('date') ?? null);
 	
 		$base64 = null;
 	
@@ -222,16 +221,19 @@ class EventController extends Controller
 	 *
 	 * @param $id
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
     public function destroy($id)
     {
-		if (!auth()->user()->perm_events) return json_encode(['success' => false]);
+		if (!auth()->user()->perm_events) return response(403)->json(['success' => false]);
 	
 		$event = Event::findOrFail($id);
 	
-		if ($event->delete())
-			return json_encode(['success' => true]);
+		if ($event->delete()) {
+			session()->flash('success', 'Veranstaltung erfolgreich gelöscht.');
+			return response()->json(['success' => true]);
+		}
 	
-		return json_encode(['success' => false]);
+		return response()->json(['success' => false]);
     }
 }

@@ -58,15 +58,60 @@
 					['link', ['linkDialogShow', 'unlink']]
 				]
 			});
+			$('#date').daterangepicker({
+				"showDropdowns": true,
+				"showWeekNumbers": true,
+				"startDate": "{{ date('Y-m-d') }}",
+				"endDate": "{{ date('Y-m-d') }}",
+				"locale": {
+					"format": "YYYY-MM-DD",
+					"separator": " bis ",
+					"applyLabel": "Anwenden",
+					"cancelLabel": "Abbrechen",
+					"fromLabel": "Von",
+					"toLabel": "Bis",
+					"customRangeLabel": "Benutzerdefiniert",
+					"weekLabel": "W",
+					"daysOfWeek": [
+						"So",
+						"Mo",
+						"Di",
+						"Mi",
+						"Do",
+						"Fr",
+						"Sa"
+					],
+					"monthNames": [
+						"Januar",
+						"Februar",
+						"März",
+						"April",
+						"Mai",
+						"Juni",
+						"Juli",
+						"August",
+						"September",
+						"Oktober",
+						"November",
+						"Dezember"
+					],
+					"firstDay": 1
+				}
+			}, function(start, end, label) {
+				console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+			});
 		});
 	</script>
 @endsection
 
 @push('styles')
 	<link href="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+	<link href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" rel="stylesheet" />
 @endpush
 
 @push('scripts')
 	<script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/lang/summernote-de-DE.min.js"></script>
+	<script src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+	<script src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
 @endpush

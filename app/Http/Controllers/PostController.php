@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Post;
 use Illuminate\Http\Request;
 use Validator;
@@ -63,6 +62,7 @@ class PostController extends Controller
 	/**
 	 * Show the form for creating a new resource.
 	 *
+	 * @param Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create(Request $request)
@@ -110,6 +110,7 @@ class PostController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
+	 * @param  Request $request
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
@@ -126,6 +127,7 @@ class PostController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 *
+	 * @param  Request $request
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
 	 */
@@ -180,16 +182,19 @@ class PostController extends Controller
 	 *
 	 * @param  int $id
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
 	public function destroy($id)
 	{
-		if (!auth()->user()->perm_posts) return json_encode(['success' => false]);
+		if (!auth()->user()->perm_posts) return response()->json(['success' => false]);
 		
 		$post = Post::findOrFail($id);
 		
-		if ($post->delete())
-			return json_encode(['success' => true]);
+		if ($post->delete()) {
+			session()->flash('success', 'Beitrag erfolgreich gelöscht.');
+			return response()->json(['success' => true]);
+		}
 		
-		return json_encode(['success' => false]);
+		return response()->json(['success' => false]);
 	}
 }

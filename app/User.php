@@ -8,6 +8,10 @@ use App\Post;
 
 /**
  * @property mixed $posts
+ * @property int $perm_users
+ * @property int $perm_posts
+ * @property int $perm_events
+ * @property int $perm_openings
  */
 class User extends Authenticatable
 {

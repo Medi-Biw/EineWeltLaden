@@ -34,7 +34,7 @@ class EmailController extends Controller
 		if ($v->fails())
 			return redirect('/kontakt/formular')->withErrors($v, 'contact')->withInput();
 		
-		$to = env('CONTACT_EMAIL_ADDRESS');
+		$to = env('CONTACT_FORM_ADDRESS');
 		
 		if (empty($to)) abort(500);
 		
