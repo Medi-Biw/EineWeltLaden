@@ -26,11 +26,34 @@
 	@stack('scripts')
 </head>
 <body>
+<div id="ie-block" hidden>
+	<div>
+		<h3><b>Hoppla.</b> Sie verwenden den veralteten Internet Explorer.</h3>
+		<p>Ihr Browser ist bereits seit Längerem nicht mehr dazu geeignet, Internetseiten, die aktuelle Webstandards anwenden, ordnungsgemäß darzustellen.</p>
+		<div>
+			Bitte verwenden Sie einen aktuellen Webrowser, wie zum Beispiel:
+			<ul>
+				<li><b><a href="https://www.mozilla.org/de/firefox/" target="_self">Mozilla Firefox</a></b> <em>(empfohlen)</em></li>
+				<li><a href="https://www.google.com/intl/de/chrome/" target="_self">Google Chome</a></li>
+				<li style="list-style: none">oder</li>
+				<li><a href="https://www.opera.com/" target="_self">Opera</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 <div id="app" class="container d-flex flex-column align-items-stretch">
 	@include('inc.navbar')
 	<div id="content">
 		@yield('content')
 	</div>
 </div>
+<!--[if lte IE 9]>
+<script>
+	var ie = document.getElementById('ie-block');
+	ie.removeAttribute('hidden');
+	var app = document.getElementById('app');
+	app.className += ' hidden';
+</script>
+<![endif]-->
 </body>
 </html>
