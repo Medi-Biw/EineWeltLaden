@@ -31,7 +31,7 @@
 		<h3><b>Hoppla.</b> Sie verwenden den veralteten Internet Explorer.</h3>
 		<p>Ihr Browser ist bereits seit Längerem nicht mehr dazu geeignet, Internetseiten, die aktuelle Webstandards anwenden, ordnungsgemäß darzustellen.</p>
 		<div>
-			Bitte verwenden Sie einen aktuellen Webrowser, wie zum Beispiel:
+			Bitte verwenden Sie einen aktuellen Webbrowser, wie zum Beispiel:
 			<ul>
 				<li><b><a href="https://www.mozilla.org/de/firefox/" target="_self">Mozilla Firefox</a></b> <em>(empfohlen)</em></li>
 				<li><a href="https://www.google.com/intl/de/chrome/" target="_self">Google Chome</a></li>
@@ -47,13 +47,23 @@
 		@yield('content')
 	</div>
 </div>
-<!--[if lte IE 9]>
-<script>
+{{--
+<!--[if IE]>
+<script type="text/javascript">
 	var ie = document.getElementById('ie-block');
 	ie.removeAttribute('hidden');
 	var app = document.getElementById('app');
 	app.className += ' hidden';
 </script>
 <![endif]-->
+--}}
+<script type="text/javascript">
+	if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+		var ie = document.getElementById('ie-block');
+		ie.removeAttribute('hidden');
+		var app = document.getElementById('app');
+		app.className += ' hidden';
+	}
+</script>
 </body>
 </html>
