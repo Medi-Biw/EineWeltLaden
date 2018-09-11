@@ -20,7 +20,7 @@
 							<small>{{ date_format($post->created_at, 'd.m.Y H:i') }} | {{ $post->user->name }}</small>
 						</h6>
 						<p class="card-text">
-							{{ substr(strip_tags($post->body), 0, 149) }}{!! (count_chars($post->body) > 150) ? '&nbsp;&hellip;' : '' !!}
+							{!! substr(strip_tags($post->body, '<br><p>'), 0, 149) !!}{!! (count_chars($post->body) > 150) ? '&nbsp;&hellip;' : '' !!}
 						</p>
 						<a href="{{ route('posts.show', $post->id) }}" class="card-link">Weiterlesen</a>
 						@auth

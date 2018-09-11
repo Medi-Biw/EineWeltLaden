@@ -90,9 +90,9 @@ class PageController extends Controller
 			[	'title' => 'Fairer Handel',
 				'link' => route('laden', ['sub' => 'fair-trade'])
 			],
-			[	'title' => 'Mitarbeiter',
+			/*[	'title' => 'Mitarbeiter',
 				'link' => route('laden', ['sub' => 'mitarbeiter'])
-			],
+			],*/
 			[	'title' => 'Standort',
 				'link' => route('laden', ['sub' => 'standort'])
 			],

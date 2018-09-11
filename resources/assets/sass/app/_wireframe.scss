@@ -216,7 +216,7 @@ nav#top-navbar {
 					position: relative;
 					display: block;
 					width: 100%;
-					p {
+					p, h1, h2, h3, h4, h5, h6 {
 						display: block;
 						margin: 0.5rem auto 1rem;
 						position: static;
@@ -230,7 +230,8 @@ nav#top-navbar {
 							img {
 								display: block;
 								margin: 0 auto;
-								width: auto !important;
+								width: auto;
+								max-width: 100% !important;
 							}
 							br {
 								display: none;
@@ -242,6 +243,11 @@ nav#top-navbar {
 							max-width: 100%;
 							border-radius: 3px;
 							box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.5);
+						}
+					}
+					h1, h2, h3, h4, h5, h6 {
+						& + h1, & + h2, & + h3, & + h4, & + h5, & + h6 {
+							margin: -1rem auto 1rem !important;
 						}
 					}
 				}

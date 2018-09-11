@@ -18,34 +18,35 @@
 
 			<h4>Vertreten durch:</h4>
 			<address>
-				<strong>Helgard Hopf</strong>
-				<br><em>Vereinsvorsitzende</em>
-				<br><strong>@{{ ADDRESSE FRAU HOPFS }}</strong>
+				<strong>{{ env('IMPRESS_VERTRETUNG_NAME') }}</strong>
+				<br><em>{{ env('IMPRESS_VERTRETUNG_TITEL') }}</em>
+				<br><strong>{{ env('IMPRESS_VERTRETUNG_STRASSE') }} {{ env('IMPRESS_VERTRETUNG_HAUSNR') }}</strong>
+				<br><strong>{{ env('IMPRESS_VERTRETUNG_PLZ') }} {{ env('IMPRESS_VERTRETUNG_ORT') }}</strong>
 			</address>
 
 			<h4>Kontakt:</h4>
 			<p>
-				Telefon: 0 35 94/70 63 39
-				<br>E-Mail: info@example.com
+				Telefon: {{ env('IMPRESS_TEL') }}
+				<br>E-Mail: <a href="#" id="revmail" class="reverse">{{ strrev(env('CONTACT_EMAIL_ADDRESS')) }}</a>
 			</p>
 
 			<h4>Registereintrag:</h4>
 			<p>
 				Eintragung im Vereinsregister.
-				<br> Registergericht: Amtsgericht Dresden
-				<br> Registernummer: VR 30738
+				<br> Registergericht: {{ env('IMPRESS_REGISTERGERICHT') }}
+				<br> Registernummer: {{ env('IMPRESS_REGISTERNUMMER') }}
 			</p>
 
 			<h4>Umsatzsteuer:</h4>
 			<p>
 				Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect;27 a Umsatzsteuergesetz:
-				<br><strong>@{{ Ust.-ID }}</strong>
+				<br><strong>{{ env('IMPRESS_USTID') }}</strong>
 			</p>
 
 			<h4>Verantwortlich f&uuml;r den Inhalt nach &sect; 55 Abs. 2 RStV:</h4>
 			<address>
-				<strong>Helgard Hopf</strong>
-				<br><em>Vereinsvorsitzende</em>
+				<strong>{{ env('IMPRESS_INHALTSVERANTWORTUNG_NAME') }}</strong>
+				<br><em>{{ env('IMPRESS_INHALTSVERANTWORTUNG_TITEL') }}</em>
 			</address>
 		</section>
 		<section class="text-section">
@@ -55,7 +56,7 @@
 			<h4>Technische Umsetzung und Webdesign</h4>
 			<p>
 				Eric Gesemann @ Medienwerkstatt Bischofswerda
-				<br><a href="https://www.medi-biw.de">www.medi-biw.de</a>
+				<br><a href="https://www.medi-biw.de" target="_blank">www.medi-biw.de</a>
 			</p>
 		</section>
 		<section class="text-section">
@@ -86,3 +87,30 @@
 		</section>
 	</div>
 @endsection
+@push('styles')
+	<style>
+		.reverse {
+			direction: rtl;
+			unicode-bidi: bidi-override;
+		}
+	</style>
+@endpush
+@push('scripts')
+	<script>
+		$(function () {
+			let correct = false;
+			$('#revmail')
+				.on('mousedown', function () {
+					let em = "{!! implode('"+"', str_split(strrev(env('CONTACT_EMAIL_ADDRESS')), '2')) !!}"+":o"+"tl"+"iam";
+					this.href = em.split('').reverse().join('');
+				})
+				.on('mouseover', function () {
+					if (correct) return;
+					$(this).removeClass('reverse');
+					let content = $(this).text();
+					$(this).html('<span>' + content.split('').reverse().join('</span><span></span><span>'));
+					correct = true;
+				});
+		});
+	</script>
+@endpush

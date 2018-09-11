@@ -15,6 +15,9 @@
 			<p>
 				Wir weisen darauf hin, dass die Daten&uuml;bertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitsl&uuml;cken aufweisen kann. Ein l&uuml;ckenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht m&ouml;glich.
 			</p>
+			<p>
+				Wir verwenden Cookies nur, um die Funktionstüchtigkeit der Seite sicherzustellen. Sie werden weder von uns noch von Drittanbietern getrackt, während Sie auf unseren Seiten unterwegs sind. Außer den üblichen Zugriffslogs, die zum Schutz unserer Server Ihre IP-Adresse für einen begrenzten Zeitraum (maximal eine Woche) zwischenspeichern, sichern wir keine Ihrer Daten. Die Zugriffslogs dienen lediglich dazu, um mögliche Angreifer zu erkennen und abzuwehren und können keine Rückschlüsse auf die Seitennutzung von Nutzern ziehen lassen.
+			</p>
 		</section>
 		<section class="text-section">
 			<h2>Kontaktformular</h2>

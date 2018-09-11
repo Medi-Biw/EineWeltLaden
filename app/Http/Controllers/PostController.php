@@ -116,10 +116,7 @@ class PostController extends Controller
 	 */
 	public function show(Request $request, $id)
 	{
-		$post = (new Post)->where('id', $id)->with(['user'])->get()->first();
-		
-		if (count($post) <> 1)
-			return abort(404);
+		$post = Post::with(['user'])->findOrFail($id);
 		
 		return view('pages.posts.show')->with(['post' => $post, 'request' => $request, 'sidenavitems' => $this->sidenavreturn]);
 	}
@@ -135,10 +132,7 @@ class PostController extends Controller
 	{
 		if (!auth()->user()->perm_posts) abort(403);
 		
-		$post = (new Post)->where('id', $id)->with(['user'])->get()->first();
-		
-		if (count($post) <> 1)
-			return abort(500);
+		$post = Post::with(['user'])->findOrFail($id);
 		
 		return view('pages.posts.edit')->with(['post' => $post, 'request' => $request, 'sidenavitems' => $this->sidenavreturn]);
 	}
